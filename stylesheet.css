@@ -1260,7 +1260,7 @@ audio {
 	bottom: 0;
 	padding:10px 0px 10px 0px;
 }
-#play, #bannar_coming, #balloons_flying,#cake_fadein,#light_candle,#wish_message,#story {
+#play, #bannar_coming, #balloons_flying,#cake_fadein,#light_candle,#wish_message,#story, #show_letter {
 	display: none;
 }
 
@@ -1299,6 +1299,105 @@ audio {
         color: #fff;
         background-color: #466baf;
     }
+
+
+
+/* Letter Styles */
+.letter-container {
+    position: relative;
+    display: none; /* Initially hidden */
+    margin-top: 50px;
+    perspective: 1000px;
+    z-index: 100;
+}
+
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    background-color: #f0e6d6;
+    border-radius: 5px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 100px solid #d4c3a3;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    z-index: 3;
+    transform-origin: top;
+    transition: transform 0.7s ease-in-out;
+}
+
+.envelope::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 100px solid #f0e6d6;
+    border-left: 160px solid #e6d5b8;
+    border-right: 160px solid #e6d5b8;
+    z-index: 1;
+}
+
+.letter {
+    position: absolute;
+    top: -90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    min-height: 180px;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 1s 0.3s ease-in-out;
+    z-index: 2;
+    visibility: hidden; /* Hide letter initially */
+    opacity: 0;
+    color: #333;
+}
+
+.letter-container.open .letter {
+    top: 10px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.letter-container.open .envelope::before {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+.letter h4, .letter p {
+    font-family: 'Signika', sans-serif;
+    font-style: normal;
+    text-align: left;
+    width: auto;
+    user-select: text;
+    text-shadow: none;
+    display: block;
+    color: #555;
+    font-weight: normal;
+    text-transform: none;
+}
+
+.letter h4 {
+    font-weight: bold;
+    color: #C4515C;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 
 
 

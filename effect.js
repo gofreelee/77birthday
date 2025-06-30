@@ -173,12 +173,12 @@ $('document').ready(function(){
 		var i;
 
 		function msgLoop (i) {
-			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
+			$(".message p:nth-child("+i+")").fadeOut('slow').delay(1600).promise().done(function(){
 			i=i+1;
-			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
+			$(".message p:nth-child("+i+")").fadeIn('slow').delay(2000);
 			if(i==50){
-				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
-					$('.cake').fadeIn('fast');
+				$(".message p:nth-child(49)").fadeOut('slow').promise().done(function () {
+					$('#show_letter').fadeIn('slow');
 				});
 				
 			}
@@ -187,11 +187,20 @@ $('document').ready(function(){
 			}			
 
 		});
-			// body...
 		}
 		
 		msgLoop(0);
 		
+	});
+	
+	$('#show_letter').click(function(){
+		$(this).fadeOut('slow');
+		$('.cake').fadeOut('slow');
+		$('.letter-container').fadeIn('slow');
+	});
+
+	$('.envelope').click(function(){
+		$('.letter-container').addClass('open');
 	});
 });
 
